@@ -1,0 +1,15 @@
+########################################################################################################################
+############################################################################################################ Get a user.
+########################################################################################################################
+
+### The user id must be greater than or equal to 1.
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users/0
+Content-Type: application/json
+
+### The user with this id '123456789' not exist.
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users/123456789
+Content-Type: application/json
+
+### Get user by identifier '1'.
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users/1
+Content-Type: application/json
