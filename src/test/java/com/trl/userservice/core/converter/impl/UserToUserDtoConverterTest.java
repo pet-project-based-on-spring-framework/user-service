@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
         ModelMapperConfig.class,
         UserToUserDtoConverter.class
 })
-@DisplayName("PartnerTaskInnerCommentToPartnerTaskInnerCommentDtoConverter")
+@DisplayName("UserToUserDtoConverter")
 class UserToUserDtoConverterTest {
 
     @Autowired
