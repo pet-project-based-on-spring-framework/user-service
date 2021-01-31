@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class UserBuilderTest {
 
     @Test
-    void testBuilderWith() {
+    void testBuilder() {
         User expected = new User();
         expected.setId(1L);
         expected.setFirstName("Roman");
