@@ -6,6 +6,7 @@ import com.trl.userservice.core.service.UserService;
 import com.trl.userservice.core.service.exception.UserNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ public class UserServiceImpl implements UserService {
         // TODO: Implement this functionality.
     }
 
+    @Cacheable(value = "userCache", key = "'by_user_id_' + #id")
     @Override
     public User get(Long id) {
         User result;
