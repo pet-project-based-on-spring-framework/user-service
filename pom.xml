@@ -19,7 +19,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <spring-cloud.version>2020.0.0</spring-cloud.version>
+        <spring-cloud.version>2020.0.1</spring-cloud.version>
         <flyway-core.version>7.5.0</flyway-core.version>
         <h2database.version>1.4.200</h2database.version>
         <springdoc.version>1.5.3</springdoc.version>
