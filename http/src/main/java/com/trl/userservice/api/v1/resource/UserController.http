@@ -13,3 +13,7 @@ Content-Type: application/json
 ### Get user by identifier '1'.
 GET http://{{host}}:{{backend_port}}/{{version_api}}/users/1
 Content-Type: application/json
+
+### Get Page with users.
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users
+Content-Type: application/json

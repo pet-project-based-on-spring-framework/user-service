@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -60,11 +61,13 @@ class UserToUserDtoConverterTest {
                 .withEmail("tsyupryk.roman@gmail.com")
                 .withPassword("strong_password")
                 .withBirthday(LocalDate.of(1988, 6, 26))
+                .withCreatedDate(LocalDateTime.of(2021, 1, 1, 10, 30))
+                .withUpdatedDate(LocalDateTime.of(2021, 2, 1, 20, 40))
                 .build();
 
         UserDto result = converter.convert(source);
 
-        assertThat(result).usingRecursiveComparison().isEqualTo(expected);
+        assertThat(result).usingRecursiveComparison().ignoringFields("createdDate", "updatedDate").isEqualTo(expected);
     }
 
 }
