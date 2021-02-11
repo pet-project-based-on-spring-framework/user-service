@@ -63,7 +63,7 @@ class UserServiceImplCachingTest {
 
         cachingHelper.assertNoRecordInCache(USER_CACHE, KEY_BY_ID + userId);
 
-        User result = service.get(userId);
+        User result = service.getById(userId);
 
         assertThat(result).usingRecursiveComparison().isEqualTo(expected);
         cachingHelper.assertRecordInCache(USER_CACHE, KEY_BY_ID + userId, result);
@@ -85,7 +85,7 @@ class UserServiceImplCachingTest {
 
         cachingHelper.putInCache(USER_CACHE, KEY_BY_ID + userId, expected);
 
-        User result = service.get(userId);
+        User result = service.getById(userId);
 
         assertThat(result).usingRecursiveComparison().isEqualTo(expected);
     }

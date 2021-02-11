@@ -1,4 +1,4 @@
-package com.trl.userservice.api.v1.resource;
+package com.trl.userservice.api.v1.controller;
 
 import com.trl.userservice.core.service.DateTimeService;
 import org.springframework.boot.test.context.TestConfiguration;

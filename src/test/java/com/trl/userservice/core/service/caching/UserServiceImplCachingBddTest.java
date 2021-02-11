@@ -17,11 +17,9 @@ import org.springframework.context.annotation.Import;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = CachingTestConfig.CachingTestingApplication.class, webEnvironment = WebEnvironment.NONE)
@@ -65,7 +63,7 @@ class UserServiceImplCachingBddTest {
 
         cachingHelper.assertNoRecordInCache(USER_CACHE, KEY_BY_ID + userId);
 
-        User result = service.get(userId);
+        User result = service.getById(userId);
 
         then(repository).should().findById(eq(userId));
         then(repository).shouldHaveNoMoreInteractions();
@@ -87,7 +85,7 @@ class UserServiceImplCachingBddTest {
 
         cachingHelper.putInCache(USER_CACHE, KEY_BY_ID + userId, expected);
 
-        User result = service.get(userId);
+        User result = service.getById(userId);
 
         then(repository).shouldHaveNoMoreInteractions();
     }

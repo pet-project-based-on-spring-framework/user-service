@@ -5,6 +5,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.StringJoiner;
 
 /**
  * This class is designed to represent Dto of user.
@@ -40,6 +42,12 @@ public class UserDto {
 
     @Schema(example = "2000-01-01", description = "Birthday of user.", implementation = LocalDate.class)
     private LocalDate birthday;
+
+    @Schema(example = "2000-01-01", description = "Creation date of the user. Creation date will be generated automatically.", implementation = LocalDateTime.class)
+    private LocalDateTime createdDate;
+
+    @Schema(example = "2000-01-01", description = "Update date of the user. Update date will be generated automatically.", implementation = LocalDateTime.class)
+    private LocalDateTime updatedDate;
 
     public UserDto() {
     }
@@ -100,16 +108,35 @@ public class UserDto {
         this.birthday = birthday;
     }
 
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public LocalDateTime getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(LocalDateTime updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
     @Override
     public String toString() {
-        return "UserDto{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", userName='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", birthday=" + birthday +
-                '}';
+        return new StringJoiner(", ", UserDto.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("firstName='" + firstName + "'")
+                .add("lastName='" + lastName + "'")
+                .add("username='" + username + "'")
+                .add("email='" + email + "'")
+                .add("password='" + password + "'")
+                .add("birthday=" + birthday)
+                .add("createdDate=" + createdDate)
+                .add("updatedDate=" + updatedDate)
+                .toString();
     }
 
     public static final class Builder {
@@ -127,6 +154,10 @@ public class UserDto {
         private String password;
 
         private LocalDate birthday;
+
+        private LocalDateTime createdDate;
+
+        private LocalDateTime updatedDate;
 
         public Builder() {
         }
@@ -166,6 +197,16 @@ public class UserDto {
             return this;
         }
 
+        public Builder withCreatedDate(LocalDateTime createdDate) {
+            this.createdDate = createdDate;
+            return this;
+        }
+
+        public Builder withUpdatedDate(LocalDateTime updatedDate) {
+            this.updatedDate = updatedDate;
+            return this;
+        }
+
         public UserDto build() {
             UserDto result = new UserDto();
 
@@ -176,6 +217,8 @@ public class UserDto {
             result.setEmail(this.email);
             result.setPassword(this.password);
             result.setBirthday(this.birthday);
+            result.setCreatedDate(this.createdDate);
+            result.setUpdatedDate(this.updatedDate);
 
             return result;
         }

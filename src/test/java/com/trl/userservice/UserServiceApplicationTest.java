@@ -1,6 +1,6 @@
 package com.trl.userservice;
 
-import com.trl.userservice.api.v1.resource.ResourceTestConfig;
+import com.trl.userservice.api.v1.controller.ResourceTestConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

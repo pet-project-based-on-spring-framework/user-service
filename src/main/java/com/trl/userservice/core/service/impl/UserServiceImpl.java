@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Cacheable(value = "userCache", key = "'by_user_id_' + #id")
     @Override
-    public User get(Long id) {
+    public User getById(Long id) {
         User result;
 
         Optional<User> userRepositoryById = userRepository.findById(id);
@@ -45,15 +46,20 @@ public class UserServiceImpl implements UserService {
 
         result = userRepositoryById.get();
 
-        LOG.debug("In get - Found user : [{}]", result);
+        LOG.debug("In getById - Found user : [{}]", result);
 
         return result;
     }
 
     @Override
-    public Page<User> getAll(Long id) {
-        // TODO: Implement this functionality.
-        return null;
+    public Page<User> getAll(Pageable pageable) {
+        Page<User> pageResult;
+
+        pageResult = userRepository.findAll(pageable);
+
+        LOG.debug("In getAll - Found Page of Users : [{}]", pageResult);
+
+        return pageResult;
     }
 
     @Override
