@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
         if (userRepositoryById.isEmpty()) {
             String errorMessage = format("A user with this ID = [%d] does not found.", id);
-            LOG.debug("In get - {}", errorMessage);
+            LOG.debug("In getById - {}", errorMessage);
             throw new UserNotFoundException(errorMessage);
         }
 
