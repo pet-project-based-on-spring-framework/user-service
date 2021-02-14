@@ -1,5 +1,6 @@
 package com.trl.userservice.core.service.caching;
 
+import com.trl.userservice.AbstractIntegrationTest;
 import com.trl.userservice.core.entity.User;
 import com.trl.userservice.core.repository.UserRepository;
 import com.trl.userservice.core.service.UserService;
@@ -25,7 +26,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest(classes = CachingTestConfig.CachingTestingApplication.class, webEnvironment = WebEnvironment.NONE)
 @Import(CachingTestConfig.class)
 @DisplayName("UserServiceImplCaching")
-class UserServiceImplCachingTest {
+class UserServiceImplCachingTest extends AbstractIntegrationTest {
 
     private static final String USER_CACHE = "userCache";
 
