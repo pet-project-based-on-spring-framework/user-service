@@ -27,5 +27,8 @@ jobs:
       - name: Configure Testcontainer
         run: echo "testcontainers.reuse.enable=true" >> /home/runner/.testcontainers.properties
 
-      - name: Build project with Maven
-        run: mvn package --file pom.xml
+      - name: Run tests
+        run: mvn clean test
+      
+      - name: Run Package
+        run: mvn clean package
