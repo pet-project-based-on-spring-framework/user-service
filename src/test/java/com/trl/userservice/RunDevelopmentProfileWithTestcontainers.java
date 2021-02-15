@@ -7,11 +7,13 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.MapPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.lifecycle.Startables;
 
 import java.util.Map;
 import java.util.stream.Stream;
 
+@Testcontainers
 public class RunDevelopmentProfileWithTestcontainers {
 
     private static final Logger LOG = LoggerFactory.getLogger(RunDevelopmentProfileWithTestcontainers.class);
