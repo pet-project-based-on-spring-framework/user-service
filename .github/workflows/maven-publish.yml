@@ -1,6 +1,5 @@
 name: Java CI
 
-
 on:
   push:
     branches: 
@@ -24,9 +23,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.11
+        
+      - name: Configure Testcontainer
+        run: echo "testcontainers.reuse.enable=true" >> /home/runner/.testcontainers.properties
 
-      - name: Grant execute permission for mvnw
-        run: chmod +x mvnw
-
-      - name: Build project with Maven
-        run: mvn package --file pom.xml
+      - name: Run tests
+        run: mvn clean test
+      
+      - name: Run Package
+        run: mvn clean package
