@@ -23,6 +23,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.11
+        
+      - name: Configure Testcontainer
+        run: echo "testcontainers.reuse.enable=true" >> /home/runner/.testcontainers.properties
 
       - name: Build project with Maven
         run: mvn package --file pom.xml
